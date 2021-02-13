@@ -18,7 +18,7 @@ namespace Business.Concrete
         {
             _productDal = productDal;
         }
-
+        
         public IResult Add(Product product)
         {
             //business codes
@@ -35,10 +35,10 @@ namespace Business.Concrete
         {
             //Is Kodlari
             //Yetkisi var mi?
-            //if (DateTime.Now.Hour == 22)
-            //{
-            //    return new ErrorDataResult<List<Product>>(Messages.MaintanceTime);
-            //}
+            if (DateTime.Now.Hour == 1)
+            {
+                return new ErrorDataResult<List<Product>>(Messages.MaintanceTime);
+            }
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductsListed);
         }
 
